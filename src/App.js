@@ -1,21 +1,25 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import { Switch, Route } from 'react-router-dom';
+
+// Components
+import Header from './components/Header';
+import Home from './components/Home';
+import Events from './components/Events';
+import Mentors from './components/Mentors';
+
 import './App.css';
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
-    );
-  }
+export default class App extends Component {
+    render() {
+        return (
+            <div className="App">
+                <Header />
+                <Switch>
+                    <Route exact path="/" component={ Home } />
+                    <Route exact path="/events" component={ Events } />
+                    <Route exact path="/mentors" component={ Mentors } />
+                </Switch>
+            </div>
+        );
+    }
 }
-
-export default App;
