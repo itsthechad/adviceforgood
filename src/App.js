@@ -1,28 +1,67 @@
 import React, { Component } from 'react';
-import { Switch, Route } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import { withStyles } from 'material-ui/styles';
 
 // Components
 import Header from './components/Header';
-import Home from './pages/Home';
-import Events from './pages/Events';
-import Mentors from './pages/Mentors';
+import Nav from './components/Nav';
+import Main from './components/Main';
 
 import 'typeface-roboto';
 import './App.css';
 
-export default class App extends Component {
+const styles = theme => ({
+    root: {
+        width: '100%',
+        height: 430,
+        marginTop: theme.spacing.unit * 3,
+        zIndex: 1,
+        overflow: 'hidden',
+    },
+    appFrame: {
+        position: 'relative',
+        display: 'flex',
+        width: '100%',
+        height: '100%',
+    },
+});
+
+class App extends Component {
+    constructor(props) {
+        super(props);
+        this.state = { drawerOpen: false };
+
+        this.onDrawerToggle = this.onDrawerToggle.bind(this);
+    }
+
     render() {
+        const { classes } = this.props;
+        const { drawerOpen } = this.state;
+
         return (
             <div className="App">
-                <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
-                <Header>
-                    <Switch>
-                        <Route exact path="/" component={ Home } />
-                        <Route exact path="/events" component={ Events } />
-                        <Route exact path="/mentors" component={ Mentors } />
-                    </Switch>
-                </Header>
+                <div className={ classes.root }>
+                    <div className={ classes.appFrame }>
+                        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+                        <Header handleDrawerToggle={ this.onDrawerToggle } />
+                        <Nav
+                            drawerOpen={ drawerOpen }
+                            handleDrawerToggle={ this.onDrawerToggle } />
+                        <Main />
+                    </div>
+                </div>
             </div>
         );
     }
+
+    onDrawerToggle() {
+        const { drawerOpen } = this.state;
+        this.setState({ drawerOpen: !drawerOpen });
+    }
 }
+
+App.propTypes = {
+    classes: PropTypes.object.isRequired,
+};
+
+export default withStyles(styles)(App);
