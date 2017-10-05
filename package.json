@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "axios": "^0.16.2",
     "formsy-material-ui": "^0.6.3",
     "formsy-react": "^0.19.5",
     "material-ui": "^1.0.0-beta.12",
@@ -18,5 +19,6 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
-  }
+  },
+  "proxy": "http://10.29.0.140:8080"
 }
