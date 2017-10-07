@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import classnames from 'classnames';
-import { Redirect } from 'react-router'
+import { Redirect } from 'react-router';
 
 // Components
 import Page from '../components/Page';
