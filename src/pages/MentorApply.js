@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import classnames from 'classnames';
 import { Editor, EditorState, convertToRaw } from 'draft-js';
+import { Redirect } from 'react-router';
 
 // Components
 import Page from '../components/Page';
@@ -22,6 +23,7 @@ export default class MentorApply extends Component {
             title: '',
             categories: [],
             descriptionEditorState: EditorState.createEmpty(),
+            applySuccess: false,
         };
 
         this.handleInputChange = this.handleInputChange.bind(this);
@@ -30,7 +32,11 @@ export default class MentorApply extends Component {
     }
 
     render() {
-        const { wasValidated, firstName, lastName, email, password, company, title, categories, descriptionEditorState } = this.state;
+        const { wasValidated, firstName, lastName, email, password, company, title, categories, descriptionEditorState, applySuccess } = this.state;
+
+        if (applySuccess) {
+            return <Redirect to="/mentor-apply-confirmation"/>;
+        }
 
         return (
             <Page>
@@ -255,14 +261,13 @@ export default class MentorApply extends Component {
         e.stopPropagation();
 
         if (this.form.checkValidity() === true) {
-            console.log('valid and submitting: ', { firstName, lastName, email, password, title, company, descriptionEditorState, categories });
             const filteredCategories = categories.reduce((res, category) => {
                 if (category.value) res.push(category.id);
                 return res;
             }, []);
             MentorService.createMentor({ firstName, lastName, email, password, title, company, categories: filteredCategories, descriptionEditorState })
             .then(() => {
-                console.log('Successfully created user');
+                this.setState({ applySuccess: true });
             });
         } else {
             this.setState({ wasValidated: true });

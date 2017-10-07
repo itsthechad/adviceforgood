@@ -141,17 +141,15 @@ export default class MentorService {
     static createMentor({ firstName, lastName, email, title, company, descriptionEditorState, categories, password }) {
         const descriptionRaw = JSON.stringify(convertToRaw(descriptionEditorState.getCurrentContent()));
         return ServiceWrapper.post('/users', {
-            data: {
-                type: 'MENTOR',
-                firstName,
-                lastName,
-                email,
-                title,
-                company,
-                categories,
-                password,
-                description: descriptionRaw,
-            },
+            role: 'MENTOR',
+            firstName,
+            lastName,
+            email,
+            title,
+            company,
+            categories,
+            password,
+            description: descriptionRaw,
         })
     }
 

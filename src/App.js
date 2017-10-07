@@ -9,6 +9,7 @@ import MenteeSignup from './pages/MenteeSignup';
 import MentorApply from './pages/MentorApply';
 import Mentor from './pages/Mentor';
 import MenteeSignupConfirmation from './pages/MenteeSignupConfirmation';
+import MentorApplyConfirmation from './pages/MentorApplyConfirmation';
 
 export default class App extends Component {
     render() {
@@ -22,6 +23,7 @@ export default class App extends Component {
                     <Route exact path="/signup" component={ MenteeSignup } />
                     <Route exact path="/mentor-apply" component={ MentorApply } />
                     <Route exact path="/signup-confirmation" component={ MenteeSignupConfirmation } />
+                    <Route exact path="/mentor-apply-confirmation" component={ MentorApplyConfirmation } />
                 </Switch>
             </div>
         );
