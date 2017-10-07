@@ -10,7 +10,7 @@ export default class Mentor extends Component {
     state = {};
 
     componentWillMount() {
-        MentorService.getMentorBySlug(this.props.match.params.mentorSlug)
+        MentorService.getMentorById(this.props.match.params.mentorId)
         .then((data) => {
             const descriptionContent = EditorState.createWithContent(convertFromRaw(JSON.parse(data.description)));
             this.setState({

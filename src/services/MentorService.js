@@ -132,9 +132,9 @@ export default class MentorService {
         });
     }
 
-    static getMentorBySlug(slug) {
+    static getMentorById(id) {
         return new Promise((resolve, reject) => {
-            resolve(DUMMY_DATA.data.filter(mentor => mentor.slug === slug)[0]);
+            resolve(DUMMY_DATA.data.filter(mentor => mentor.id === id)[0]);
         });
     }
 
