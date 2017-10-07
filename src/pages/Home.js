@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 import ServiceWrapper from './../utils/ServiceWrapper';
-import axios from 'axios';
-
 
 export default class Home extends Component {
 
