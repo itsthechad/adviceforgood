@@ -1,8 +1,12 @@
 import React, { Component } from 'react';
 import classnames from 'classnames';
+import { Redirect } from 'react-router'
 
 // Components
 import Page from '../components/Page';
+
+// Services
+import MenteeService from '../services/MenteeService';
 
 export default class MenteeSignup extends Component {
     constructor() {
@@ -14,6 +18,7 @@ export default class MenteeSignup extends Component {
             lastName: '',
             email: '',
             password: '',
+            registerSuccess: false,
         };
 
         this.handleInputChange = this.handleInputChange.bind(this);
@@ -21,7 +26,11 @@ export default class MenteeSignup extends Component {
     }
 
     render() {
-        const { wasValidated, firstName, lastName, email, password } = this.state;
+        const { wasValidated, firstName, lastName, email, password, registerSuccess } = this.state;
+
+        if (registerSuccess) {
+            return <Redirect to="/mentors"/>;
+        }
 
         return (
             <Page>
@@ -140,8 +149,19 @@ export default class MenteeSignup extends Component {
         e.stopPropagation();
 
         if (this.form.checkValidity() === true) {
-            console.log('valid and submitting: ', { firstName, lastName, email, password });
-            // TODO: submit the form
+            MenteeService.register({
+                firstName: firstName,
+                lastName: lastName,
+                email: email,
+                password: password,
+            })
+            .then(() => {
+                this.setState({ registerSuccess: true });
+            })
+            .catch(() => {
+                console.log('failed');
+                // Show error
+            })
         } else {
             this.setState({ wasValidated: true });
         }
