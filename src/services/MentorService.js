@@ -7,6 +7,7 @@ const DUMMY_DATA = {
         {
             firstName: 'Chad',
             lastName: 'Carpenter',
+            slug: 'chad-carpenter',
             company: 'Promethean',
             title: 'Level Two Software Engineer',
             categories: [ 'EDUCATION', 'TECH' ],
@@ -14,6 +15,7 @@ const DUMMY_DATA = {
         {
             firstName: 'Brooks',
             lastName: 'Parrish',
+            slug: 'brooks-parrish',
             company: 'Promethean',
             title: 'Level One Software Engineer',
             categories: [ 'EDUCATION', 'TECH' ],
@@ -21,6 +23,7 @@ const DUMMY_DATA = {
         {
             firstName: 'Rolando',
             lastName: 'Santos',
+            slug: 'rolando-santos',
             company: 'Promethean',
             title: 'Backend Guy',
             categories: [ 'EDUCATION', 'TECH' ],
@@ -28,6 +31,7 @@ const DUMMY_DATA = {
         {
             firstName: 'Adam',
             lastName: 'Walker',
+            slug: 'adam-walker',
             company: 'Advice for Good',
             title: 'The Man',
             categories: [ 'NONPROFIT' ],
@@ -35,6 +39,7 @@ const DUMMY_DATA = {
         {
             firstName: 'Jeff',
             lastName: 'Hilimire',
+            slug: 'jeff-hilimire',
             company: 'Dragon Army',
             title: 'CEO',
             categories: [ 'TECH' ],
@@ -42,6 +47,7 @@ const DUMMY_DATA = {
         {
             firstName: 'Ethan',
             lastName: 'Parrish',
+            slug: 'ethan-parrish',
             company: '48in48',
             title: 'Coordinator',
             categories: [ 'NONPROFIT' ],
@@ -49,6 +55,7 @@ const DUMMY_DATA = {
         {
             firstName: 'Chad',
             lastName: 'Carpenter',
+            slug: 'chad-carpenter',
             company: 'Promethean',
             title: 'Level Two Software Engineer',
             categories: [ 'EDUCATION', 'TECH' ],
@@ -56,6 +63,7 @@ const DUMMY_DATA = {
         {
             firstName: 'Brooks',
             lastName: 'Parrish',
+            slug: 'brooks-parrish',
             company: 'Promethean',
             title: 'Level One Software Engineer',
             categories: [ 'EDUCATION', 'TECH' ],
@@ -63,6 +71,7 @@ const DUMMY_DATA = {
         {
             firstName: 'Rolando',
             lastName: 'Santos',
+            slug: 'rolando-santos',
             company: 'Promethean',
             title: 'Backend Guy',
             categories: [ 'EDUCATION', 'TECH' ],
@@ -70,6 +79,7 @@ const DUMMY_DATA = {
         {
             firstName: 'Adam',
             lastName: 'Walker',
+            slug: 'adam-walker',
             company: 'Advice for Good',
             title: 'The Man',
             categories: [ 'NONPROFIT' ],
@@ -78,9 +88,13 @@ const DUMMY_DATA = {
 }
 
 export default class MentorService {
-    getMentorList() {
+    static getMentorList() {
         return new Promise((resolve, reject) => {
             resolve(DUMMY_DATA);
         });
+    }
+
+    static getMentorLink(mentor) {
+        return `/mentor/${mentor.slug}`;
     }
 }

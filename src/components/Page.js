@@ -15,7 +15,7 @@ export default class Page extends Component {
         const { clsPrefix, children } = this.props;
 
         return(
-            <div className={ classnames('page', `${clsPrefix}-page`) }>
+            <div className={ classnames('page', `${clsPrefix}-page`, 'container') }>
                 { children }
             </div>
         );
