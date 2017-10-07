@@ -11,12 +11,16 @@ export default class Header extends Component {
                         <span className="navbar-toggler-icon"></span>
                     </button>
                     <div className="collapse navbar-collapse" id="navbarNav">
-                        <div className="navbar-nav">
+                        <div className="navbar-nav mr-auto">
                             <NavLink exact to="/" className="nav-item nav-link" activeClassName='active'>Home</NavLink>
                             <NavLink to="/mentors" className="nav-item nav-link" activeClassName='active'>Mentors</NavLink>
                             <NavLink to="/events" className="nav-item nav-link" activeClassName='active'>Events</NavLink>
-                            <NavLink to="/signup" className="nav-item nav-link" activeClassName='active'>Signup</NavLink>
                         </div>
+                            <Link to="/signup" className="my-2 my-lg-0">
+                                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
+                                    Signup
+                                </button>
+                            </Link>
                     </div>
                 </nav>
             </header>
