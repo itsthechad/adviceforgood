@@ -7,7 +7,7 @@ export default class Home extends Component {
         return (
             <div>
                 <h1>Home Page</h1>
-                <button onClick={ this.handleButtonClick } type="button" class="btn btn-primary">Test Button</button>
+                <button onClick={ this.handleButtonClick } type="button" className="btn btn-primary">Test Button</button>
             </div>
         );
     }
