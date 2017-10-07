@@ -201,7 +201,11 @@ export default class MentorApply extends Component {
         return categories.map(category =>
             <div className="form-check" key={ category.id }>
                 <label className="form-check-label" htmlFor={ `${category.id}-checkbox` }>
-                    <input className="form-check-input" type="checkbox" value={ category.value } />
+                    <input
+                        className="form-check-input"
+                        type="checkbox"
+                        value={ category.value }
+                        id={ `${category.id}-checkbox` } />
                     { category.name }
                 </label>
             </div>
