@@ -4,7 +4,7 @@ import classnames from 'classnames';
 // Components
 import Page from '../components/Page';
 
-export default class Home extends Component {
+export default class MenteeSignup extends Component {
     constructor() {
         super();
 
@@ -27,8 +27,15 @@ export default class Home extends Component {
             <Page>
                 <h1>Sign Up. Do Good.</h1>
 
-                <form className={ classnames('container', { 'was-validated': wasValidated }) } id="needs-validation" noValidate ref={ (c) => { this.form = c; } }>
+                {/* Form */}
+                <form
+                    className={ classnames('container', { 'was-validated': wasValidated }) }
+                    id="needs-validation"
+                    noValidate
+                    ref={ (c) => { this.form = c; } }>
+
                     <div className="row">
+                        {/* First Name */}
                         <div className="col-md-6 mb-3">
                             <label htmlFor="validationCustom01">First name</label>
                             <input
@@ -37,13 +44,14 @@ export default class Home extends Component {
                                 value={ firstName }
                                 type="text"
                                 className="form-control"
-                                id="validationCustom01"
                                 placeholder="First name"
                                 required />
                             <div className="invalid-feedback">
                                 Please provide your first name.
                             </div>
                         </div>
+
+                        {/* Last Name */}
                         <div className="col-md-6 mb-3">
                             <label htmlFor="validationCustom02">Last name</label>
                             <input
@@ -52,7 +60,6 @@ export default class Home extends Component {
                                 value={ lastName }
                                 type="text"
                                 className="form-control"
-                                id="validationCustom02"
                                 placeholder="Last name"
                                 required />
                             <div className="invalid-feedback">
@@ -60,6 +67,8 @@ export default class Home extends Component {
                             </div>
                         </div>
                     </div>
+
+                    {/* Email */}
                     <div className="row">
                         <div className="col-md-12 mb-3">
                             <label htmlFor="validationCustom03">Email</label>
@@ -69,14 +78,15 @@ export default class Home extends Component {
                                 value={ email }
                                 type="email"
                                 className="form-control"
-                                id="validationCustom03"
-                                placeholder="me@somewhere.com"
+                                placeholder="me@example.com"
                                 required />
                             <div className="invalid-feedback">
                                 Please provide a valid email.
                             </div>
                         </div>
                     </div>
+
+                    {/* Password  */}
                     <div className="row">
                         <div className="col-md-12 mb-3">
                             <label htmlFor="validationCustom05">Password</label>
@@ -86,7 +96,6 @@ export default class Home extends Component {
                                 value={ password }
                                 type="password"
                                 className="form-control"
-                                id="validationCustom05"
                                 placeholder="Password"
                                 required
                                 minLength="6"
@@ -96,7 +105,15 @@ export default class Home extends Component {
                             </div>
                         </div>
                     </div>
-                    <button className="btn btn-primary" type="submit" onClick={ this.onSubmit }>Submit</button>
+
+                    {/* Submit */}
+                    <button
+                        className="btn btn-primary"
+                        type="submit"
+                        onClick={ this.onSubmit }>
+                        Submit
+                    </button>
+
                 </form>
             </Page>
         );

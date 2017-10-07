@@ -4,7 +4,7 @@ import classnames from 'classnames';
 // Components
 import Page from '../components/Page';
 
-export default class Home extends Component {
+export default class MentorApply extends Component {
     constructor() {
         super();
 
@@ -25,72 +25,95 @@ export default class Home extends Component {
 
         return (
             <Page>
-                <h1>Be a Mentor.</h1>
+                <h1>Apply to be a Mentor</h1>
 
-                <form className={ classnames('container', { 'was-validated': wasValidated }) } id="needs-validation" noValidate ref={ (c) => { this.form = c; } }>
-                    <div className="row mb-3">
-                        <label htmlFor="validationCustom01">First name</label>
-                        <input
-                            name="firstName"
-                            onChange={ this.handleInputChange }
-                            value={ firstName }
-                            type="text"
-                            className="form-control"
-                            id="validationCustom01"
-                            placeholder="First name"
-                            required />
-                        <div className="invalid-feedback">
-                            Please provide your first name.
+                {/* Form */}
+                <form
+                    className={ classnames('container', { 'was-validated': wasValidated }) }
+                    id="needs-validation"
+                    noValidate
+                    ref={ (c) => { this.form = c; } }>
+
+                    <div className="row">
+                        {/* First Name */}
+                        <div className="col-md-6 mb-3">
+                            <label htmlFor="validationCustom01">First name</label>
+                            <input
+                                name="firstName"
+                                onChange={ this.handleInputChange }
+                                value={ firstName }
+                                type="text"
+                                className="form-control"
+                                placeholder="First name"
+                                required />
+                            <div className="invalid-feedback">
+                                Please provide your first name.
+                            </div>
+                        </div>
+
+                        {/* Last Name */}
+                        <div className="col-md-6 mb-3">
+                            <label htmlFor="validationCustom02">Last name</label>
+                            <input
+                                name="lastName"
+                                onChange={ this.handleInputChange }
+                                value={ lastName }
+                                type="text"
+                                className="form-control"
+                                placeholder="Last name"
+                                required />
+                            <div className="invalid-feedback">
+                                Please provide your last name.
+                            </div>
                         </div>
                     </div>
-                    <div className="row mb-3">
-                        <label htmlFor="validationCustom02">Last name</label>
-                        <input
-                            name="lastName"
-                            onChange={ this.handleInputChange }
-                            value={ lastName }
-                            type="text"
-                            className="form-control"
-                            id="validationCustom02"
-                            placeholder="Last name"
-                            required />
-                        <div className="invalid-feedback">
-                            Please provide your last name.
+
+                    {/* Email */}
+                    <div className="row">
+                        <div className="col-md-12 mb-3">
+                            <label htmlFor="validationCustom03">Email</label>
+                            <input
+                                name="email"
+                                onChange={ this.handleInputChange }
+                                value={ email }
+                                type="email"
+                                className="form-control"
+                                placeholder="me@example.com"
+                                required />
+                            <div className="invalid-feedback">
+                                Please provide a valid email.
+                            </div>
                         </div>
                     </div>
-                    <div className="row mb-3">
-                        <label htmlFor="validationCustom03">Email</label>
-                        <input
-                            name="email"
-                            onChange={ this.handleInputChange }
-                            value={ email }
-                            type="email"
-                            className="form-control"
-                            id="validationCustom03"
-                            placeholder="me@somewhere.com"
-                            required />
-                        <div className="invalid-feedback">
-                            Please provide a valid email.
+
+                    {/* Password  */}
+                    <div className="row">
+                        <div className="col-md-12 mb-3">
+                            <label htmlFor="validationCustom05">Password</label>
+                            <input
+                                name="password"
+                                onChange={ this.handleInputChange }
+                                value={ password }
+                                type="password"
+                                className="form-control"
+                                placeholder="Password"
+                                required
+                                minLength="6"
+                                maxLength="20" />
+                            <div className="invalid-feedback">
+                                Please provide a password of 6 to 20 characters.
+                            </div>
                         </div>
                     </div>
-                    <div className="row mb-3">
-                        <label htmlFor="validationCustom05">Password</label>
-                        <input
-                            name="password"
-                            onChange={ this.handleInputChange }
-                            value={ password }
-                            type="password"
-                            className="form-control"
-                            id="validationCustom05"
-                            placeholder="Password"
-                            required
-                            minLength="6"
-                            maxLength="20" />
-                        <div className="invalid-feedback">
-                            Please provide a password of 6 to 20 characters.
-                        </div>
-                    </div>
-                    <button className="btn btn-primary" type="submit" onClick={ this.onSubmit }>Submit</button>
+
+                    {/* Submit */}
+                    <button
+                        className="btn btn-primary"
+                        type="submit"
+                        onClick={ this.onSubmit }>
+                        Submit
+                    </button>
+
                 </form>
             </Page>
         );
