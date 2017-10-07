@@ -97,6 +97,33 @@ const DUMMY_DATA = {
     ],
 }
 
+const DUMMY_CATEGORIES = [
+    {
+        id: 'technology',
+        name: 'Technology',
+    },
+    {
+        id: 'startup',
+        name: 'Startup',
+    },
+    {
+        id: 'nonprofit',
+        name: 'Non-profit',
+    },
+    {
+        id: 'art',
+        name: 'Art',
+    },
+    {
+        id: 'personal',
+        name: 'Personal Life',
+    },
+    {
+        id: 'career',
+        name: 'Career',
+    },
+];
+
 export default class MentorService {
     static getMentorList() {
         return new Promise((resolve, reject) => {
@@ -112,5 +139,9 @@ export default class MentorService {
 
     static getMentorLink(mentor) {
         return `/mentor/${mentor.slug}`;
+    }
+
+    static getMentorCategories() {
+        return Promise.resolve(DUMMY_CATEGORIES);
     }
 }

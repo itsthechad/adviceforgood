@@ -4,6 +4,9 @@ import classnames from 'classnames';
 // Components
 import Page from '../components/Page';
 
+// Services
+import MentorService from '../services/MentorService';
+
 export default class MentorApply extends Component {
     constructor() {
         super();
@@ -150,17 +153,24 @@ export default class MentorApply extends Component {
                         </div>
                     </div>
 
+                    {/* Categories  */}
+                    <div className="row">
+                        <div className="col-md-12 mb-3">
+                            { categories && this.renderCatCheckboxes(categories) }
+                        </div>
+                    </div>
+
                     {/* Description  */}
                     <div className="row">
                         <div className="col-md-12 mb-3">
-                            <label htmlFor="validationCustom07">Description</label>
+                            <label htmlFor="validationCustom08">Description</label>
                             <textarea
                                 name="description"
                                 onChange={ this.handleInputChange }
                                 value={ description }
                                 type="text"
                                 className="form-control"
-                                id="validationCustom07"
+                                id="validationCustom08"
                                 placeholder="A brief biography explaining why volunteers would want your services as a mentor."
                                 required />
                             <div className="invalid-feedback">
@@ -179,6 +189,24 @@ export default class MentorApply extends Component {
 
                 </form>
             </Page>
+        );
+    }
+
+    componentDidMount() {
+        this.initCategories()
+        .then((categories) => {
+            this.setState({ categories: categories });
+        });
+    }
+
+    renderCatCheckboxes(categories) {
+        return categories.map(category =>
+            <div className="form-check" key={ category.id }>
+                <label className="form-check-label" htmlFor={ `${category.id}-checkbox` }>
+                    <input className="form-check-input" type="checkbox" value={ category.value } />
+                    { category.name }
+                </label>
+            </div>
         );
     }
 
@@ -205,4 +233,16 @@ export default class MentorApply extends Component {
             this.setState({ wasValidated: true });
         }
     }
+
+    // Get all categories from back-end and init them to false (not selected)
+    initCategories() {
+        return MentorService.getMentorCategories()
+        .then((categories) => {
+            categories.forEach((category) => {
+                category.value = false;
+            });
+            return categories;
+        });
+    }
+
 }
