@@ -25,7 +25,7 @@ export default class Home extends Component {
 
         return (
             <Page>
-                <h1>Sign Up. Do Good.</h1>
+                <h1>Be a Mentor.</h1>
 
                 <form className={ classnames('container', { 'was-validated': wasValidated }) } id="needs-validation" noValidate ref={ (c) => { this.form = c; } }>
                     <div className="row mb-3">

@@ -16,11 +16,12 @@ export default class Header extends Component {
                             <NavLink to="/mentors" className="nav-item nav-link" activeClassName='active'>Mentors</NavLink>
                             <NavLink to="/events" className="nav-item nav-link" activeClassName='active'>Events</NavLink>
                         </div>
-                            <Link to="/signup" className="my-2 my-lg-0">
-                                <button className="btn btn-outline-success my-2 my-sm-0" type="submit">
-                                    Signup
-                                </button>
-                            </Link>
+                        <Link to="/mentor-apply" className="my-2 mx-2 my-lg-0">Be a Mentor</Link>
+                        <Link to="/signup" className="my-2 my-lg-0">
+                            <button className="btn btn-outline-success my-2 my-sm-0" type="submit">
+                                Get Mentorship
+                            </button>
+                        </Link>
                     </div>
                 </nav>
             </header>
