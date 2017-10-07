@@ -1,10 +1,9 @@
 import axios from 'axios';
-import ENV from './../env.js';
 
 export default class ServiceWrapper {
     static get(url, config) {
         return new Promise((resolve, reject) => {
-            axios.get(`${ENV.HOST}${url}`, { ...config })
+            axios.get(`${process.env.REACT_APP_DEV_ENV || process.env.REACT_APP_PROD_ENV}${url}`, { ...config })
             .then(resp => {
                 resolve(resp);
             })
@@ -16,7 +15,7 @@ export default class ServiceWrapper {
 
     static post(url, config) {
         return new Promise((resolve, reject) => {
-            axios.post(`${ENV.HOST}${url}`, { ...config })
+            axios.post(`${process.env.REACT_APP_DEV_ENV || process.env.REACT_APP_PROD_ENV}${url}`, { ...config })
             .then(resp => {
                 resolve(resp);
             })
