@@ -44,6 +44,7 @@ export default class MenteeSignup extends Component {
                                 value={ firstName }
                                 type="text"
                                 className="form-control"
+                                id="validationCustom01"
                                 placeholder="First name"
                                 required />
                             <div className="invalid-feedback">
@@ -60,6 +61,7 @@ export default class MenteeSignup extends Component {
                                 value={ lastName }
                                 type="text"
                                 className="form-control"
+                                id="validationCustom02"
                                 placeholder="Last name"
                                 required />
                             <div className="invalid-feedback">
@@ -78,6 +80,7 @@ export default class MenteeSignup extends Component {
                                 value={ email }
                                 type="email"
                                 className="form-control"
+                                id="validationCustom03"
                                 placeholder="me@example.com"
                                 required />
                             <div className="invalid-feedback">
@@ -89,13 +92,14 @@ export default class MenteeSignup extends Component {
                     {/* Password  */}
                     <div className="row">
                         <div className="col-md-12 mb-3">
-                            <label htmlFor="validationCustom05">Password</label>
+                            <label htmlFor="validationCustom04">Password</label>
                             <input
                                 name="password"
                                 onChange={ this.handleInputChange }
                                 value={ password }
                                 type="password"
                                 className="form-control"
+                                id="validationCustom04"
                                 placeholder="Password"
                                 required
                                 minLength="6"

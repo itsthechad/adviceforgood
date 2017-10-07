@@ -14,6 +14,10 @@ export default class MentorApply extends Component {
             lastName: '',
             email: '',
             password: '',
+            businessName: '',
+            businessRole: '',
+            description: '',
+            categories: [],
         };
 
         this.handleInputChange = this.handleInputChange.bind(this);
@@ -21,7 +25,7 @@ export default class MentorApply extends Component {
     }
 
     render() {
-        const { wasValidated, firstName, lastName, email, password } = this.state;
+        const { wasValidated, firstName, lastName, email, password, businessName, businessRole, description, categories } = this.state;
 
         return (
             <Page>
@@ -44,6 +48,7 @@ export default class MentorApply extends Component {
                                 value={ firstName }
                                 type="text"
                                 className="form-control"
+                                id="validationCustom01"
                                 placeholder="First name"
                                 required />
                             <div className="invalid-feedback">
@@ -60,6 +65,7 @@ export default class MentorApply extends Component {
                                 value={ lastName }
                                 type="text"
                                 className="form-control"
+                                id="validationCustom02"
                                 placeholder="Last name"
                                 required />
                             <div className="invalid-feedback">
@@ -78,6 +84,7 @@ export default class MentorApply extends Component {
                                 value={ email }
                                 type="email"
                                 className="form-control"
+                                id="validationCustom03"
                                 placeholder="me@example.com"
                                 required />
                             <div className="invalid-feedback">
@@ -89,19 +96,75 @@ export default class MentorApply extends Component {
                     {/* Password  */}
                     <div className="row">
                         <div className="col-md-12 mb-3">
-                            <label htmlFor="validationCustom05">Password</label>
+                            <label htmlFor="validationCustom04">Password</label>
                             <input
                                 name="password"
                                 onChange={ this.handleInputChange }
                                 value={ password }
                                 type="password"
                                 className="form-control"
+                                id="validationCustom04"
                                 placeholder="Password"
                                 required
                                 minLength="6"
                                 maxLength="20" />
                             <div className="invalid-feedback">
                                 Please provide a password of 6 to 20 characters.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="row">
+                        {/* Business Name */}
+                        <div className="col-md-6 mb-3">
+                            <label htmlFor="validationCustom05">Organization Name</label>
+                            <input
+                                name="businessName"
+                                onChange={ this.handleInputChange }
+                                value={ businessName }
+                                type="text"
+                                className="form-control"
+                                id="validationCustom05"
+                                placeholder="Business or organization name"
+                                required />
+                            <div className="invalid-feedback">
+                                Please provide your business name.
+                            </div>
+                        </div>
+
+                        {/* Business Role */}
+                        <div className="col-md-6 mb-3">
+                            <label htmlFor="validationCustom06">Role</label>
+                            <input
+                                name="businessRole"
+                                onChange={ this.handleInputChange }
+                                value={ businessRole }
+                                type="text"
+                                className="form-control"
+                                id="validationCustom06"
+                                placeholder="Role, title, or position"
+                                required />
+                            <div className="invalid-feedback">
+                                Please provide your role.
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* Description  */}
+                    <div className="row">
+                        <div className="col-md-12 mb-3">
+                            <label htmlFor="validationCustom07">Description</label>
+                            <textarea
+                                name="description"
+                                onChange={ this.handleInputChange }
+                                value={ description }
+                                type="text"
+                                className="form-control"
+                                id="validationCustom07"
+                                placeholder="A brief biography explaining why volunteers would want your services as a mentor."
+                                required />
+                            <div className="invalid-feedback">
+                                Please provide a description.
                             </div>
                         </div>
                     </div>
