@@ -19,9 +19,9 @@ export default class App extends Component {
                     <Route exact path="/" component={ Home } />
                     <Route exact path="/events" component={ Events } />
                     <Route exact path="/mentors" component={ Mentors } />
+                    <Route exact path="/mentors/:mentorSlug" component={ Mentor } />
                     <Route exact path="/signup" component={ MenteeSignup } />
                     <Route exact path="/mentor-apply" component={ MentorApply } />
-                    <Route exact path="/mentor/:mentorSlug" component={ Mentor } />
                 </Switch>
             </div>
         );

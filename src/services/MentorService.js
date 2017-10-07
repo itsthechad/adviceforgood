@@ -138,7 +138,7 @@ export default class MentorService {
     }
 
     static getMentorLink(mentor) {
-        return `/mentor/${mentor.slug}`;
+        return `/mentors/${mentor.slug}`;
     }
 
     static getMentorCategories() {
