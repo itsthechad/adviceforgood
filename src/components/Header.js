@@ -17,7 +17,7 @@ export default class Header extends Component {
                             <NavLink to="/events" className="nav-item nav-link" activeClassName='active'>Events</NavLink>
                         </div>
                             <Link to="/signup" className="my-2 my-lg-0">
-                                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
+                                <button className="btn btn-outline-success my-2 my-sm-0" type="submit">
                                     Signup
                                 </button>
                             </Link>
