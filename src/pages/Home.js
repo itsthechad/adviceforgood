@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import ServiceWrapper from './../utils/ServiceWrapper';
 import axios from 'axios';
 
 
@@ -14,11 +15,8 @@ export default class Home extends Component {
     }
 
     handleButtonClick() {
-        axios.post('http://192.168.1.200:8080/register', {
-            data: {
-                username: 'blah',
-                password: '12345',
-            }
+        ServiceWrapper.post('/mentor/list', {
+            data: {},
         })
         .then((response) => {
             console.log(response);
