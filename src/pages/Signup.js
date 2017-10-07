@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import classnames from 'classnames';
 
+// Components
+import Page from '../components/Page';
+
 export default class Home extends Component {
     constructor() {
         super();
@@ -21,7 +24,7 @@ export default class Home extends Component {
         const { wasValidated, firstName, lastName, email, password } = this.state;
 
         return (
-            <div>
+            <Page>
                 <h1>Sign Up. Do Good.</h1>
 
                 <form className={ classnames('container', { 'was-validated': wasValidated }) } id="needs-validation" noValidate ref={ (c) => { this.form = c; } }>
@@ -87,9 +90,9 @@ export default class Home extends Component {
                             Please provide a password of 6 to 20 characters.
                         </div>
                     </div>
-                    <button className="btn btn-primary" type="submit" onClick={ this.onSubmit }>Submit form</button>
+                    <button className="btn btn-primary" type="submit" onClick={ this.onSubmit }>Submit</button>
                 </form>
-            </div>
+            </Page>
         );
     }
 
