@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import classnames from 'classnames';
+import { Editor, EditorState, convertToRaw } from 'draft-js';
 
 // Components
 import Page from '../components/Page';
@@ -19,16 +20,17 @@ export default class MentorApply extends Component {
             password: '',
             businessName: '',
             businessRole: '',
-            description: '',
             categories: [],
+            descriptionState: EditorState.createEmpty(),
         };
 
         this.handleInputChange = this.handleInputChange.bind(this);
+        this.handleDescriptionChange = this.handleDescriptionChange.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
     }
 
     render() {
-        const { wasValidated, firstName, lastName, email, password, businessName, businessRole, description, categories } = this.state;
+        const { wasValidated, firstName, lastName, email, password, businessName, businessRole, categories, descriptionState } = this.state;
 
         return (
             <Page>
@@ -164,15 +166,11 @@ export default class MentorApply extends Component {
                     <div className="row">
                         <div className="col-md-12 mb-3">
                             <label htmlFor="validationCustom08">Description</label>
-                            <textarea
-                                name="description"
-                                onChange={ this.handleInputChange }
-                                value={ description }
-                                type="text"
-                                className="form-control"
-                                id="validationCustom08"
-                                placeholder="A brief biography explaining why volunteers would want your services as a mentor."
-                                required />
+                            { descriptionState &&
+                                <Editor
+                                    editorState={ descriptionState }
+                                    onChange={ this.handleDescriptionChange } />
+                            }
                             <div className="invalid-feedback">
                                 Please provide a description.
                             </div>
@@ -220,6 +218,22 @@ export default class MentorApply extends Component {
         });
     }
 
+    handleDescriptionChange(editorState) {
+        this.setState({ descriptionState: editorState });
+    }
+
+
+    // Get all categories from back-end and init them to false (not selected)
+    initCategories() {
+        return MentorService.getMentorCategories()
+        .then((categories) => {
+            categories.forEach((category) => {
+                category.value = false;
+            });
+            return categories;
+        });
+    }
+
     onSubmit(e) {
         const { firstName, lastName, email, password } = this.state;
 
@@ -233,16 +247,4 @@ export default class MentorApply extends Component {
             this.setState({ wasValidated: true });
         }
     }
-
-    // Get all categories from back-end and init them to false (not selected)
-    initCategories() {
-        return MentorService.getMentorCategories()
-        .then((categories) => {
-            categories.forEach((category) => {
-                category.value = false;
-            });
-            return categories;
-        });
-    }
-
 }
