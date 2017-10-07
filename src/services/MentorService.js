@@ -1,4 +1,5 @@
-// import ServiceWrapper from '../utils/ServiceWrapper';
+import ServiceWrapper from '../utils/ServiceWrapper';
+import { convertToRaw } from 'draft-js';
 
 const DUMMY_DATA = {
     pageNumber: 1,
@@ -126,8 +127,8 @@ const DUMMY_CATEGORIES = [
 
 export default class MentorService {
     static getMentorList() {
-        return new Promise((resolve, reject) => {
-            resolve(DUMMY_DATA);
+        return ServiceWrapper.post('/mentor/list', {
+            data: {},
         });
     }
 
@@ -137,6 +138,23 @@ export default class MentorService {
         });
     }
 
+    static createMentor({ firstName, lastName, email, title, company, descriptionEditorState, categories, password }) {
+        const descriptionRaw = JSON.stringify(convertToRaw(descriptionEditorState.getCurrentContent()));
+        return ServiceWrapper.post('/users', {
+            data: {
+                type: 'MENTOR',
+                firstName,
+                lastName,
+                email,
+                title,
+                company,
+                categories,
+                password,
+                description: descriptionRaw,
+            },
+        })
+    }
+
     static getMentorLink(mentor) {
         return `/mentors/${mentor.slug}`;
     }
@@ -144,4 +162,5 @@ export default class MentorService {
     static getMentorCategories() {
         return Promise.resolve(DUMMY_CATEGORIES);
     }
+
 }

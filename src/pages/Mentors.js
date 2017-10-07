@@ -5,9 +5,7 @@ import Page from '../components/Page';
 import MentorService from '../services/MentorService';
 
 export default class Mentors extends Component {
-    state = {
-        mentorsData: {},
-    };
+    state = {};
 
     componentWillMount() {
         MentorService.getMentorList()
@@ -18,15 +16,14 @@ export default class Mentors extends Component {
 
     render() {
         const { mentorsData } = this.state;
-        const { data } = mentorsData;
 
         return (
             <Page clsPrefix='mentors'>
                 <h1>Mentors</h1>
                 <hr />
-                { data &&
+                { mentorsData &&
                     <div className='list-group'>
-                        { data.map((mentor) => this.renderMentorListItem(mentor)) }
+                        { mentorsData.data.map((mentor) => this.renderMentorListItem(mentor)) }
                     </div>
                 }
             </Page>

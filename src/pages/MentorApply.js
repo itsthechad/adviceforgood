@@ -18,10 +18,10 @@ export default class MentorApply extends Component {
             lastName: '',
             email: '',
             password: '',
-            businessName: '',
-            businessRole: '',
+            company: '',
+            title: '',
             categories: [],
-            descriptionState: EditorState.createEmpty(),
+            descriptionEditorState: EditorState.createEmpty(),
         };
 
         this.handleInputChange = this.handleInputChange.bind(this);
@@ -30,7 +30,7 @@ export default class MentorApply extends Component {
     }
 
     render() {
-        const { wasValidated, firstName, lastName, email, password, businessName, businessRole, categories, descriptionState } = this.state;
+        const { wasValidated, firstName, lastName, email, password, company, title, categories, descriptionEditorState } = this.state;
 
         return (
             <Page>
@@ -124,9 +124,9 @@ export default class MentorApply extends Component {
                         <div className="col-md-6 mb-3">
                             <label htmlFor="validationCustom05">Organization Name</label>
                             <input
-                                name="businessName"
+                                name="company"
                                 onChange={ this.handleInputChange }
-                                value={ businessName }
+                                value={ company }
                                 type="text"
                                 className="form-control"
                                 id="validationCustom05"
@@ -141,9 +141,9 @@ export default class MentorApply extends Component {
                         <div className="col-md-6 mb-3">
                             <label htmlFor="validationCustom06">Role</label>
                             <input
-                                name="businessRole"
+                                name="title"
                                 onChange={ this.handleInputChange }
-                                value={ businessRole }
+                                value={ title }
                                 type="text"
                                 className="form-control"
                                 id="validationCustom06"
@@ -166,9 +166,9 @@ export default class MentorApply extends Component {
                     <div className="row">
                         <div className="col-md-12 mb-3">
                             <label htmlFor="validationCustom08">Description</label>
-                            { descriptionState &&
+                            { descriptionEditorState &&
                                 <Editor
-                                    editorState={ descriptionState }
+                                    editorState={ descriptionEditorState }
                                     onChange={ this.handleDescriptionChange } />
                             }
                             <div className="invalid-feedback">
@@ -205,7 +205,8 @@ export default class MentorApply extends Component {
                         className="form-check-input"
                         type="checkbox"
                         value={ category.value }
-                        id={ `${category.id}-checkbox` } />
+                        id={ `${category.id}-checkbox` }
+                        onChange={ (e) => this.handleCategoryChange(category, e.target.checked) } />
                     { category.name }
                 </label>
             </div>
@@ -222,8 +223,17 @@ export default class MentorApply extends Component {
         });
     }
 
+    handleCategoryChange = (changedCategory, checked) => {
+        const { categories } = this.state;
+        const updatedCategories = categories.map((category) => {
+            if (changedCategory.id === category.id) category.value = checked;
+            return category;
+        });
+        this.setState({ categories: updatedCategories });
+    }
+
     handleDescriptionChange(editorState) {
-        this.setState({ descriptionState: editorState });
+        this.setState({ descriptionEditorState: editorState });
     }
 
 
@@ -239,14 +249,21 @@ export default class MentorApply extends Component {
     }
 
     onSubmit(e) {
-        const { firstName, lastName, email, password } = this.state;
+        const { firstName, lastName, email, password, title, company, descriptionEditorState, categories } = this.state;
 
         e.preventDefault();
         e.stopPropagation();
 
         if (this.form.checkValidity() === true) {
-            console.log('valid and submitting: ', { firstName, lastName, email, password });
-            // TODO: submit the form
+            console.log('valid and submitting: ', { firstName, lastName, email, password, title, company, descriptionEditorState, categories });
+            const filteredCategories = categories.reduce((res, category) => {
+                if (category.value) res.push(category.id);
+                return res;
+            }, []);
+            MentorService.createMentor({ firstName, lastName, email, password, title, company, categories: filteredCategories, descriptionEditorState })
+            .then(() => {
+                console.log('Successfully created user');
+            });
         } else {
             this.setState({ wasValidated: true });
         }

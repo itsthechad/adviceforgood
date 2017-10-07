@@ -17,7 +17,7 @@ export default class ServiceWrapper {
         return new Promise((resolve, reject) => {
             axios.post(`${process.env.REACT_APP_DEV_ENV || process.env.REACT_APP_PROD_ENV}${url}`, { ...config })
             .then(resp => {
-                resolve(resp);
+                resolve(resp.data);
             })
             .catch(resp => {
                 reject(resp);
