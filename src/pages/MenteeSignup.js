@@ -29,7 +29,7 @@ export default class MenteeSignup extends Component {
         const { wasValidated, firstName, lastName, email, password, registerSuccess } = this.state;
 
         if (registerSuccess) {
-            return <Redirect to="/mentors"/>;
+            return <Redirect to="/signup-confirmation"/>;
         }
 
         return (

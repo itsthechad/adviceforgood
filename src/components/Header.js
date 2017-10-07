@@ -14,7 +14,6 @@ export default class Header extends Component {
                         <div className="navbar-nav mr-auto">
                             <NavLink exact to="/" className="nav-item nav-link" activeClassName='active'>Home</NavLink>
                             <NavLink to="/mentors" className="nav-item nav-link" activeClassName='active'>Mentors</NavLink>
-                            <NavLink to="/events" className="nav-item nav-link" activeClassName='active'>Events</NavLink>
                         </div>
                         <Link to="/mentor-apply" className="my-2 mx-2 my-lg-0">Be a Mentor</Link>
                         <Link to="/signup" className="my-2 my-lg-0">
