@@ -32,13 +32,13 @@ export default class Mentors extends Component {
 
     renderMentorListItem = (mentor) => {
         const mentorLink = MentorService.getMentorLink(mentor);
-        const { firstName, lastName, title, company, slug } = mentor;
+        const { firstName, lastName, title, company, id } = mentor;
 
         return (
             <a
                 className={ classnames('list-group-item', 'list-group-item-action', 'flex-column', 'align-items-start') }
                 href={ mentorLink }
-                key={ slug }>
+                key={ id }>
                 <h2>{ `${firstName} ${lastName}` }</h2>
                 <div>{ `${title} at ${company}` }</div>
             </a>
