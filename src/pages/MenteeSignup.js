@@ -37,7 +37,7 @@ export default class MenteeSignup extends Component {
 
     render() {
         const { wasValidated, firstName, lastName, email, password, formSubmittedSuccessfully } = this.state;
-        const user = UserService.getUser() || {};
+        const user = UserService.getCurrentUser() || {};
 
         const formData = {
             wasValidated,

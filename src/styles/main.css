@@ -13,6 +13,22 @@ button.btn.btn-primary:active {
     box-shadow: none;
 }
 
+button.btn.btn-outline-primary {
+    border-color: #00c1a8;
+    color: #00c1a8;
+}
+
+button.btn.btn-outline-primary:hover {
+    background-color: #00c1a8;
+    color: #fff;
+}
+
+span.badge.badge-primary {
+    background-color: #00c1a8;
+    color: #fff;
+}
+
+
 a {
     color: #aaa;
 }

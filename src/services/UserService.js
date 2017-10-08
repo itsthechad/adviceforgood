@@ -4,9 +4,9 @@ const DUMMY_USER = {
     firstName: 'Brooks',
     lastName: 'Parrish',
     email: 'thisismyemail@thisisntmyemail.com',
-    role: 'ADMIN',
+    role: 'MENTOR',
     id: '1',
-    points: '5',
+    points: 8,
 };
 
 export default class UserService {

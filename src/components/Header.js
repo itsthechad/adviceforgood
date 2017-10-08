@@ -56,10 +56,10 @@ export default class Header extends Component {
             // Not logged in, so show logged out options
             return (
                 <div>
-                    <Link to="/login" className="my-2 mx-2 my-lg-0">Log In</Link>
+                    <Link to="/login" className="afg-navbar__login-btn my-2 mx-2 my-lg-0">Log In</Link>
                     <Link to="/signup" className="my-2 my-lg-0">
-                        <button className="btn btn-primary my-2 my-sm-0" type="submit">
-                            Get Mentorship
+                        <button className="afg-navbar__signup-btn btn btn-primary my-2 my-sm-0" type="submit">
+                            Become a Volunteer
                         </button>
                     </Link>
                 </div>
@@ -79,14 +79,13 @@ export default class Header extends Component {
 
         return (
             <div>
-                <Link to="/logout" className="my-2 mx-2 my-lg-0">Log Out</Link>
                 { user.role !== 'ADMIN' &&
-                    <Link to={ editAccountRoute } className="my-2 mx-2 my-lg-0">
-                        <button className="btn btn-primary my-2 my-sm-0" type="submit">
-                            Edit Account
-                        </button>
+                    <Link to={ editAccountRoute } className="afg-navbar__user-link my-2 mx-2 my-lg-0">
+                        { `${user.firstName} ${user.lastName}` }
+                        <span className="badge badge-primary">{ user.points }</span>
                     </Link>
                 }
+                <Link to="/logout" className="my-2 mx-2 my-lg-0">Log Out</Link>
             </div>
         );
     }

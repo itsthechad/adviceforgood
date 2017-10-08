@@ -13,6 +13,21 @@
     color: #000;
 }
 
+.afg-navbar__user-link,
+.afg-navbar__user-link:hover {
+    font-weight: 500;
+    color: #00c1a8;
+}
+
+.afg-navbar__user-link .badge {
+    margin-left: 6px;
+    font-size: 80%;
+    line-height: 1.2;
+    color: #00c1a8;
+    background-color: #fff;
+}
+
+
 @media (min-width: 576px) {
     .navbar .navbar-nav .nav-link.nav-item {
         font-weight: 500;
