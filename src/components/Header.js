@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link, NavLink } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 // Components
 import AFGBrand from '../components/AFGBrand';
@@ -11,7 +12,12 @@ import '../styles/header.css';
 import UserService from '../services/UserService';
 
 export default class Header extends Component {
+    static propTypes = {
+        isAdmin: PropTypes.bool,
+    };
+
     render() {
+        const { isAdmin } = this.props;
         return (
             <header>
                 <nav className="afg-navbar navbar navbar-expand-sm navbar-light">
@@ -29,6 +35,11 @@ export default class Header extends Component {
                             <NavLink to="/mentors" className="nav-item nav-link" activeClassName='active'>
                                 <span className="nav-link-inner">Mentors</span>
                             </NavLink>
+                            { isAdmin &&
+                                <NavLink to="/users" className="nav-item nav-link" activeClassName='active'>
+                                    <span className="nav-link-inner">Manage Users</span>
+                                </NavLink>
+                            }
                         </div>
 
                         { this.renderAccountActions() }

@@ -24,7 +24,7 @@ export default class App extends Component {
 
         return (
             <div className="App">
-                <Header />
+                <Header isAdmin={ isAdmin } />
                 <Switch>
                     <Route exact path="/" component={ Home } />
                     <Route exact path="/mentors" component={ Mentors } />

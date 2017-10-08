@@ -22,12 +22,12 @@ export default class Mentor extends Component {
 
     render() {
         const { mentor = {}, descriptionContent } = this.state;
-        const { firstName, lastName, title, company } = mentor;
+        const { firstName, lastName, jobTitle, company } = mentor;
 
         return (
             <Page clsPrefix='mentor'>
                 <h1>{ `${firstName} ${lastName}` }</h1>
-                <div>{ `${title} at ${company}` }</div>
+                <div>{ `${jobTitle} at ${company}` }</div>
                 { descriptionContent &&
                     <Editor
                         editorState={ descriptionContent }

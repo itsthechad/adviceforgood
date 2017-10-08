@@ -35,7 +35,7 @@ export default class Mentors extends Component {
 
     renderMentorListItem = (mentor) => {
         const mentorLink = MentorService.getMentorLink(mentor);
-        const { firstName, lastName, title, company, id } = mentor;
+        const { firstName, lastName, jobTitle, company, id } = mentor;
 
         return (
             <a
@@ -43,7 +43,7 @@ export default class Mentors extends Component {
                 href={ mentorLink }
                 key={ id }>
                 <h2>{ `${firstName} ${lastName}` }</h2>
-                <div>{ `${title} at ${company}` }</div>
+                <div>{ `${jobTitle} at ${company}` }</div>
             </a>
         )
     };
