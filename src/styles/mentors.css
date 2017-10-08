@@ -1,0 +1,44 @@
+@media (min-width: 576px) {
+    .page.mentors-page {
+        max-width: 720px;
+    }
+}
+
+.mentors-page .list-group .list-group-item {
+    border: none;
+}
+
+.mentors-page h2 {
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: #00c1a8;
+    text-transform: capitalize;
+    margin-bottom: 4px;
+}
+
+.mentors-page .list-group .list-group-item:hover h2 {
+    text-decoration: underline;
+}
+
+.mentors-page .list-group .list-group-item:hover .mentor-item__title {
+    color: #555;
+}
+
+.mentor-item__title {
+    color: #999;
+    transition: color 300ms linear;
+}
+
+.become-a-mentor {
+    background-color: #f8f8f8;
+    border-radius: .25rem;
+    padding: 1rem;
+    color: #555;
+    margin-top: 30px;
+}
+
+.become-a-mentor h1 {
+    font-size: 1.4rem;
+    line-height: 1;
+    font-weight: 600;
+}

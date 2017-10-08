@@ -5,6 +5,9 @@ import classnames from 'classnames';
 import Page from '../components/Page';
 import MentorService from '../services/MentorService';
 
+// Styles
+import '../styles/mentors.css';
+
 export default class Mentors extends Component {
     state = {};
 
@@ -28,7 +31,15 @@ export default class Mentors extends Component {
                     </div>
                 }
                 <hr />
-                <Link to='/mentor-apply'><span>Apply to be a mentor</span></Link>
+                <div className="become-a-mentor">
+                    <h1>Interested in offering your mentorship?</h1>
+                    <p>
+                        Advice for Good is always looking for accomplished professionals who enjoy mentoring, and who are willing to share their time and advice in exchange for earning support for their favorite charities. If that sounds like you, click the button below to get started.
+                    </p>
+                    <Link to='/mentor-apply'>
+                        <button className="btn btn-outline-primary my-2 my-sm-0" type="submit">Become a Mentor</button>
+                    </Link>
+                </div>
             </Page>
         );
     }
@@ -43,7 +54,7 @@ export default class Mentors extends Component {
                 href={ mentorLink }
                 key={ id }>
                 <h2>{ `${firstName} ${lastName}` }</h2>
-                <div>{ `${jobTitle} at ${company}` }</div>
+                <div className="mentor-item__title">{ `${jobTitle} at ${company}` }</div>
             </a>
         )
     };

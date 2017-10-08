@@ -55,12 +55,14 @@ export default class Header extends Component {
         if (!user) {
             // Not logged in, so show logged out options
             return (
-                <div>
-                    <Link to="/login" className="afg-navbar__login-btn my-2 mx-2 my-lg-0">Log In</Link>
-                    <Link to="/signup" className="my-2 my-lg-0">
+                <div className='afg-navbar__actions'>
+                    <Link to="/signup" className="nav-item nav-link no-hover my-2 my-lg-0">
                         <button className="afg-navbar__signup-btn btn btn-primary my-2 my-sm-0" type="submit">
                             Become a Volunteer
                         </button>
+                    </Link>
+                    <Link to="/login" className="nav-item nav-link">
+                        <span className="nav-link-inner">Log In</span>
                     </Link>
                 </div>
             );

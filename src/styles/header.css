@@ -4,14 +4,23 @@
     height: 70px;
 }
 
+.afg-navbar .nav-link.nav-item:hover,
 .navbar .navbar-nav .nav-link.nav-item:hover {
     transition: background-color 300ms linear;
-}
-
-.navbar .navbar-nav .nav-link.nav-item:hover {
     background-color: #f8f8f8;
     color: #000;
 }
+
+.afg-navbar .afg-navbar__actions {
+    display: flex;
+    height: 100%;
+    flex-direction: row;
+}
+
+.navbar .afg-navbar__actions .nav-link.nav-item.no-hover:hover {
+    background-color: transparent;
+}
+
 
 .afg-navbar__user-link,
 .afg-navbar__user-link:hover {
@@ -29,12 +38,20 @@
 
 
 @media (min-width: 576px) {
+    .navbar .afg-navbar__actions .nav-link.nav-item,
     .navbar .navbar-nav .nav-link.nav-item {
         font-weight: 500;
         padding-left: 1rem;
         padding-right: 1rem;
         display: inline-flex;
+        align-items: center;
     }
+
+    .navbar .afg-navbar__actions .nav-link.nav-item button {
+        height: 36px;
+        margin: auto;
+    }
+
 
     .navbar .navbar-collapse {
         height: 100%;
@@ -44,6 +61,7 @@
         height: 100%;
     }
 
+    .navbar .afg-navbar__actions .nav-link.nav-item .nav-link-inner,
     .navbar .navbar-nav .nav-link .nav-link-inner {
         margin: auto;
     }
