@@ -15,7 +15,7 @@ export default class MenteeService {
             url = `/users/${idToModify}`;
         }
 
-        let descriptionRaw = '';
+        let descriptionRaw;
         if (data.descriptionEditorState) {
             descriptionRaw = JSON.stringify(convertToRaw(data.descriptionEditorState.getCurrentContent()));
         }
