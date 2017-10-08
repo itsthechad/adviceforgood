@@ -1,22 +1,22 @@
-import ServiceWrapper from '../utils/ServiceWrapper';
+// import ServiceWrapper from '../utils/ServiceWrapper';
 
 const DUMMY_USER = {
     firstName: 'Brooks',
     lastName: 'Parrish',
     email: 'thisismyemail@thisisntmyemail.com',
     role: 'ADMIN',
-    id: '1'
-}
+    id: '1',
+};
 
 export default class UserService {
-    static login(credentials) {
+    static login(/* credentials */) {
         // return ServiceWrapper.post('/login', {
         //     email: credentials.email,
         //     password: credentials.password,
         // })
         // .then(resp => resp)
         // .catch(err => err);
-        return new Promise((resolve, reject) => {
+        return new Promise((resolve/* , reject */) => {
             localStorage.setItem('token', JSON.stringify('TOP_SECRET'));
             localStorage.setItem('user', JSON.stringify(DUMMY_USER));
             resolve();
