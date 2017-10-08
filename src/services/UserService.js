@@ -29,12 +29,27 @@ export default class UserService {
         .catch(err => err);
     }
 
+    static logout() {
+        // return ServiceWrapper.post('/login', {
+        //     email: credentials.email,
+        //     password: credentials.password,
+        // })
+        // .then(resp => resp)
+        // .catch(err => err);
+
+        return Promise.resolve()
+        .then(() => {
+            localStorage.removeItem('token');
+            localStorage.removeItem('user');
+        });
+    }
+
     static getUser() {
         return JSON.parse(localStorage.getItem('user'));
     }
 
     static isAdmin() {
         const user = UserService.getUser();
-        return user.role === 'ADMIN';
+        return user && user.role === 'ADMIN';
     }
 }

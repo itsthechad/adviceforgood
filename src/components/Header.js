@@ -7,6 +7,9 @@ import AFGBrand from '../components/AFGBrand';
 // Styles
 import '../styles/header.css';
 
+// Services
+import UserService from '../services/UserService';
+
 export default class Header extends Component {
     render() {
         return (
@@ -27,15 +30,35 @@ export default class Header extends Component {
                                 <span className="nav-link-inner">Mentors</span>
                             </NavLink>
                         </div>
-                        <Link to="/login" className="my-2 mx-2 my-lg-0">Log In</Link>
-                        <Link to="/signup" className="my-2 my-lg-0">
-                            <button className="btn btn-primary my-2 my-sm-0" type="submit">
-                                Get Mentorship
-                            </button>
-                        </Link>
+
+                        { this.renderAccountActions() }
                     </div>
                 </nav>
             </header>
+        );
+    }
+
+    renderAccountActions() {
+        const user = UserService.getUser();
+
+        if (!user) {
+            // Not logged in, so show logged out options
+            return (
+                <div>
+                    <Link to="/login" className="my-2 mx-2 my-lg-0">Log In</Link>
+                    <Link to="/signup" className="my-2 my-lg-0">
+                        <button className="btn btn-primary my-2 my-sm-0" type="submit">
+                            Get Mentorship
+                        </button>
+                    </Link>
+                </div>
+            );
+        } // else
+
+        return (
+            <div>
+                <Link to="/logout" className="my-2 mx-2 my-lg-0">Log Out</Link>
+            </div>
         );
     }
 }

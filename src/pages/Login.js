@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import classnames from 'classnames';
+import { Redirect } from 'react-router';
 
 // Components
 import Page from '../components/Page';
@@ -13,13 +14,20 @@ export default class Login extends Component {
         wasValidated: false,
         email: '',
         password: '',
+        loginSuccess: false,
     };
 
     render() {
-        const { email, password, wasValidated } = this.state;
+        const { email, password, wasValidated, loginSuccess } = this.state;
+
+        if (loginSuccess) {
+            return (
+                <Redirect to="/mentors" />
+            );
+        } // else
 
         return (
-            <Page clsPrefix='login'>
+            <Page clsPrefix="login">
                 <h1>Log In</h1>
 
                 {/* Form */}
@@ -101,6 +109,9 @@ export default class Login extends Component {
             UserService.login({ email, password })
             .then(() => {
                 this.setState({ loginSuccess: true });
+            })
+            .catch((err) => {
+                console.log('login failure: ', err);
             });
         } else {
             this.setState({ wasValidated: true });
