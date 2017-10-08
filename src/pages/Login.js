@@ -11,6 +11,8 @@ export default class Login extends Component {
 
     state = {
         wasValidated: false,
+        email: '',
+        password: '',
     };
 
     render() {
@@ -30,7 +32,7 @@ export default class Login extends Component {
                     {/* Email */}
                     <div className="row">
                         <div className="col-md-12 mb-3">
-                            <label htmlFor="validationCustom03">Email</label>
+                            <label htmlFor="validationCustom01">Email</label>
                             <input
                                 name="email"
                                 onChange={ this.handleInputChange }
@@ -38,6 +40,7 @@ export default class Login extends Component {
                                 type="email"
                                 className="form-control"
                                 id="validationCustom01"
+                                placeholder="me@example.com"
                                 required />
                             <div className="invalid-feedback">
                                 Please provide the email address associated with your Advice for Good account.
@@ -48,17 +51,17 @@ export default class Login extends Component {
                     {/* Password  */}
                     <div className="row">
                         <div className="col-md-12 mb-3">
-                            <label htmlFor="validationCustom04">Password</label>
-                        <input
-                            name="password"
-                            onChange={ this.handleInputChange }
-                            value={ password }
-                            type="password"
-                            className="form-control"
-                            id="validationCustom02"
-                            required
-                            minLength="6"
-                            maxLength="20" />
+                            <label htmlFor="validationCustom02">Password</label>
+                            <input
+                                name="password"
+                                onChange={ this.handleInputChange }
+                                value={ password }
+                                type="password"
+                                className="form-control"
+                                id="validationCustom02"
+                                required
+                                minLength="6"
+                                maxLength="20" />
                             <div className="invalid-feedback">
                                 Please enter your password.
                             </div>
