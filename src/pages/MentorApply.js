@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import classnames from 'classnames';
-import { Editor, EditorState, convertToRaw } from 'draft-js';
+import { Editor, EditorState } from 'draft-js';
 import { Redirect } from 'react-router';
 
 // Components
