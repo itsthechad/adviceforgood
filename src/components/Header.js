@@ -55,9 +55,27 @@ export default class Header extends Component {
             );
         } // else
 
+        let editAccountRoute;
+        switch (user.role) {
+            case 'MENTOR':
+                editAccountRoute = '/mentor-apply';
+                break;
+            case 'MENTEE':
+            default:
+                editAccountRoute = '/signup';
+                break;
+        }
+
         return (
             <div>
                 <Link to="/logout" className="my-2 mx-2 my-lg-0">Log Out</Link>
+                { user.role !== 'ADMIN' &&
+                    <Link to={ editAccountRoute } className="my-2 mx-2 my-lg-0">
+                        <button className="btn btn-primary my-2 my-sm-0" type="submit">
+                            Edit Account
+                        </button>
+                    </Link>
+                }
             </div>
         );
     }

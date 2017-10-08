@@ -37,6 +37,7 @@ export default class MenteeSignup extends Component {
 
     render() {
         const { wasValidated, firstName, lastName, email, password, formSubmittedSuccessfully } = this.state;
+        const user = UserService.getUser() || {};
 
         const formData = {
             wasValidated,
@@ -50,9 +51,14 @@ export default class MenteeSignup extends Component {
             return <Redirect to="/signup-confirmation" />;
         }
 
+        let pageHeader = <h1>Sign Up. Do Good.</h1>;
+        if (user.id) {
+            pageHeader = <h1>Edit Mentee Account</h1>;
+        }
+
         return (
             <Page>
-                <h1>Sign Up. Do Good.</h1>
+                { pageHeader }
                 <MenteeSignupForm
                     formData={ formData }
                     handleInputChange={ this.onInputChange }

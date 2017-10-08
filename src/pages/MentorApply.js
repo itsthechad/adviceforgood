@@ -8,7 +8,12 @@ import Page from '../components/Page';
 
 // Services
 import MentorService from '../services/MentorService';
+import UserService from '../services/UserService';
 
+// *
+// * Create or edit a mentor account
+// * TODO: Improve password functionality (both create and edit)
+// *
 export default class MentorApply extends Component {
     constructor() {
         super();
@@ -33,14 +38,20 @@ export default class MentorApply extends Component {
 
     render() {
         const { wasValidated, firstName, lastName, email, password, company, title, categories, descriptionEditorState, applySuccess } = this.state;
+        const user = UserService.getUser() || {};
 
         if (applySuccess) {
-            return <Redirect to="/mentor-apply-confirmation"/>;
+            return <Redirect to="/mentor-apply-confirmation" />;
+        }
+
+        let pageHeader = <h1>Apply to be a Mentor</h1>;
+        if (user.id) {
+            pageHeader = <h1>Edit Mentor Account</h1>;
         }
 
         return (
             <Page>
-                <h1>Apply to be a Mentor</h1>
+                { pageHeader }
 
                 {/* Form */}
                 <form
