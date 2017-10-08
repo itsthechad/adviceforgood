@@ -16,10 +16,12 @@ export default class UserService {
         // })
         // .then(resp => resp)
         // .catch(err => err);
-        return new Promise((resolve/* , reject */) => {
+
+        return Promise.resolve(DUMMY_USER)
+        .then((resp) => {
             localStorage.setItem('token', JSON.stringify('TOP_SECRET'));
-            localStorage.setItem('user', JSON.stringify(DUMMY_USER));
-            resolve();
+            localStorage.setItem('user', JSON.stringify(resp));
+            return resp;
         });
     }
 

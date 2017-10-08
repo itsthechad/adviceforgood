@@ -14,15 +14,16 @@ export default class Login extends Component {
         wasValidated: false,
         email: '',
         password: '',
-        loginSuccess: false,
+        redirectTo: '',
     };
 
     render() {
-        const { email, password, wasValidated, loginSuccess } = this.state;
+        const { email, password, wasValidated, redirectTo } = this.state;
 
-        if (loginSuccess) {
+        // Redirect users once they've logged in:
+        if (redirectTo) {
             return (
-                <Redirect to="/mentors" />
+                <Redirect to={ redirectTo } />
             );
         } // else
 
@@ -107,8 +108,22 @@ export default class Login extends Component {
 
         if (this.form.checkValidity() === true) {
             UserService.login({ email, password })
-            .then(() => {
-                this.setState({ loginSuccess: true });
+            .then((resp) => {
+                let destination;
+
+                switch (resp.role) {
+                    case 'ADMIN':
+                        destination = '/users';
+                        break;
+                    case 'MENTOR':
+                    case 'MENTEE':
+                    default:
+                        destination = '/mentors';
+                        break;
+                }
+
+
+                this.setState({ redirectTo: destination });
             })
             .catch((err) => {
                 console.log('login failure: ', err);
