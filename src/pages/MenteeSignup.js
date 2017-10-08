@@ -3,7 +3,7 @@ import { Redirect } from 'react-router';
 
 // Components
 import Page from '../components/Page';
-import MenteeSignupForm from '../components/forms/MenteeSignupForm';
+import MenteeForm from '../components/forms/MenteeForm';
 
 // Services
 import MenteeService from '../services/MenteeService';
@@ -18,7 +18,7 @@ export default class MenteeSignup extends Component {
     constructor() {
         super();
 
-        const user = UserService.getUser() || {};
+        const user = UserService.getCurrentUser() || {};
         const { firstName, lastName, email, id } = user;
 
         this.state = {
@@ -59,7 +59,7 @@ export default class MenteeSignup extends Component {
         return (
             <Page>
                 { pageHeader }
-                <MenteeSignupForm
+                <MenteeForm
                     formData={ formData }
                     handleInputChange={ this.onInputChange }
                     handleSubmit={ this.onSubmit } />

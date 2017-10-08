@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 
-export default class MenteeSignupForm extends Component {
+export default class MenteeForm extends Component {
 
     static defaultProps = {
         formData: {
@@ -12,26 +12,27 @@ export default class MenteeSignupForm extends Component {
             email: '',
             password: '',
         },
+        isAdmin: false,
         handleInputChange: () => {},
         handleSubmit: () => {},
     };
 
     static propTypes = {
         formData: PropTypes.object,
+        isAdmin: PropTypes.bool,
+        mdoe: PropTypes.string,
         handleInputChange: PropTypes.func,
         handleSubmit: PropTypes.func,
-    }
+    };
 
-    constructor() {
-        super();
-
-        this.handleInputChange = this.handleInputChange.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
-    }
+    static MODE = {
+        NEW_USER: 'NEW_USER',
+        EDIT_USER: 'EDIT_USER',
+    };
 
     render() {
-        const { formData } = this.props;
-        const { wasValidated, firstName, lastName, email, password } = formData;
+        const { formData, isAdmin } = this.props;
+        const { wasValidated, firstName, lastName, email, password, points } = formData;
 
         return (
             <form
@@ -116,6 +117,25 @@ export default class MenteeSignupForm extends Component {
                     </div>
                 </div>
 
+                {/* Points */}
+                { isAdmin &&
+                    <div className="row">
+                        <div className="col-md-12 mb-3">
+                            <label htmlFor="validationCustom03">Points</label>
+                            <input
+                                name="points"
+                                onChange={ this.handleInputChange }
+                                value={ points }
+                                type="number"
+                                className="form-control"
+                                id="validationCustom04" />
+                            <div className="invalid-feedback">
+                                Please give a valid points value.
+                            </div>
+                        </div>
+                    </div>
+                }
+
                 {/* Submit */}
                 <button
                     className="btn btn-primary"
@@ -128,12 +148,13 @@ export default class MenteeSignupForm extends Component {
         );
     }
 
-    handleInputChange(e) {
+    handleInputChange = (e) => {
         this.props.handleInputChange(e);
-    }
+    };
 
-    handleSubmit(e) {
+    handleSubmit = (e) => {
+        const { isAdmin } = this.props;
         const formIsValid = this.form.checkValidity();
-        this.props.handleSubmit(e, formIsValid);
-    }
+        this.props.handleSubmit(e, isAdmin || formIsValid);
+    };
 }

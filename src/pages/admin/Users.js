@@ -35,11 +35,12 @@ export default class Users extends Component {
 
     renderUserListItem = (user) => {
         const { firstName, lastName, id, role } = user;
+        const userLink = UserService.getUserLink(user);
 
         return (
             <a
                 className={ classnames('list-group-item', 'list-group-item-action', 'flex-column', 'align-items-start') }
-                href="#"
+                href={ userLink }
                 key={ id }>
                 <h2>{ `${firstName} ${lastName}` }</h2>
                 <div>{ role }</div>

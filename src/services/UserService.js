@@ -46,12 +46,27 @@ export default class UserService {
         });
     }
 
-    static getUser() {
+    static getUserById(id) {
+        return ServiceWrapper.get(`/users/${id}`)
+        .then(resp => resp.data)
+        .catch(err => err);
+    }
+
+    static getUserLink(user) {
+        const { id, role } = user;
+        if (role && role[0] === 'MENTOR') {
+            return `/users/mentor/${id}`;
+        } else {
+            return `/users/${id}`;
+        }
+    }
+
+    static getCurrentUser() {
         return JSON.parse(localStorage.getItem('user'));
     }
 
     static isAdmin() {
-        const user = UserService.getUser();
+        const user = UserService.getCurrentUser();
         return user && user.role === 'ADMIN';
     }
 }

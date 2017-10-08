@@ -13,6 +13,7 @@ import Logout from './pages/Logout';
 import MenteeSignupConfirmation from './pages/MenteeSignupConfirmation';
 import MentorApplyConfirmation from './pages/MentorApplyConfirmation';
 import Users from './pages/admin/Users';
+import EditUser from './pages/admin/EditUser';
 
 // Services
 import UserService from './services/UserService';
@@ -34,9 +35,8 @@ export default class App extends Component {
                     <Route exact path="/mentor-apply" component={ MentorApply } />
                     <Route exact path="/signup-confirmation" component={ MenteeSignupConfirmation } />
                     <Route exact path="/mentor-apply-confirmation" component={ MentorApplyConfirmation } />
-                    { isAdmin &&
-                        <Route exact path="/users" component={ Users } />
-                    }
+                    { isAdmin && <Route exact path="/users" component={ Users } /> }
+                    { isAdmin && <Route exact path="/users/:id" component={ EditUser } /> }
                 </Switch>
             </div>
         );

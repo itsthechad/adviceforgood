@@ -39,7 +39,7 @@ export default class Header extends Component {
     }
 
     renderAccountActions() {
-        const user = UserService.getUser();
+        const user = UserService.getCurrentUser();
 
         if (!user) {
             // Not logged in, so show logged out options

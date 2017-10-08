@@ -27,6 +27,7 @@ export default class MenteeService {
             company: data.company,
             categories: data.categories,
             description: descriptionRaw,
+            points: data.points,
         })
         .then(resp => resp)
         .catch(err => err);
