@@ -1,4 +1,4 @@
-// import ServiceWrapper from '../utils/ServiceWrapper';
+import ServiceWrapper from '../utils/ServiceWrapper';
 
 const DUMMY_USER = {
     firstName: 'Brooks',
