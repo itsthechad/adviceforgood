@@ -19,7 +19,7 @@ export default class MentorApply extends Component {
     constructor() {
         super();
 
-        const user = UserService.getUser() || {};
+        const user = UserService.getCurrentUser() || {};
         const { firstName, lastName, email, company, title, categories, description, id } = user;
 
         this.state = {
@@ -43,7 +43,7 @@ export default class MentorApply extends Component {
 
     render() {
         const { wasValidated, firstName, lastName, email, password, company, title, categories, descriptionEditorState, formSubmittedSuccessfully } = this.state;
-        const user = UserService.getUser() || {};
+        const user = UserService.getCurrentUser() || {};
 
         const formData = {
             wasValidated,

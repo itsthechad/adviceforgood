@@ -6,6 +6,7 @@ const DUMMY_USER = {
     email: 'thisismyemail@thisisntmyemail.com',
     role: 'ADMIN',
     id: '1',
+    points: '5',
 };
 
 export default class UserService {

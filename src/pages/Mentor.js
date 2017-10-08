@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Editor, EditorState, convertFromRaw } from 'draft-js';
+import { Link } from 'react-router-dom';
 import classnames from 'classnames';
 
 import Page from '../components/Page';
@@ -12,7 +13,10 @@ export default class Mentor extends Component {
     componentWillMount() {
         MentorService.getMentorById(this.props.match.params.mentorId)
         .then((data) => {
-            const descriptionContent = EditorState.createWithContent(convertFromRaw(JSON.parse(data.description)));
+            let descriptionContent = '';
+            if (data.description) {
+                descriptionContent = EditorState.createWithContent(convertFromRaw(JSON.parse(data.description)));
+            }
             this.setState({
                 mentor: data,
                 descriptionContent,
@@ -36,12 +40,12 @@ export default class Mentor extends Component {
                 <div>
                     <h2>Get Coffee <small>(45 minutes)</small></h2>
                     <div>Meet with the mentor at a coffee shop of their choosing.</div>
-                    <button className={ classnames('btn', 'btn-primary') }>Redeem</button>
+                    <Link to={ { pathname: '/contact-mentor', state: { mentor: mentor, mentorshipTier: 2 } } }><button className={ classnames('btn', 'btn-primary') }>Redeem2</button></Link>
                 </div>
                 <div>
                     <h2>Phone Call <small>(30 minutes)</small></h2>
                     <div>30 minutes to pick your mentor's brain.</div>
-                    <button className={ classnames('btn', 'btn-primary') }>Redeem</button>
+                    <Link to={ { pathname: '/contact-mentor', state: { mentor: mentor, mentorshipTier: 1 } } }><button className={ classnames('btn', 'btn-primary') }>Redeem2</button></Link>
                 </div>
             </Page>
         );
