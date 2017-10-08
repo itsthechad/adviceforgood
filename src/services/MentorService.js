@@ -132,15 +132,13 @@ export default class MentorService {
     }
 
     static getMentorById(id) {
-        return new Promise((resolve, reject) => {
-            resolve(DUMMY_DATA.data.filter(mentor => mentor.id === id)[0]);
-        });
+        return ServiceWrapper.get(`/users/${id}`).then(resp => resp.data);
     }
 
     // Create/Edit mentor is the same as mentee, so just referencing MenteeService for now
 
     static getMentorLink(mentor) {
-        return `/mentors/${mentor.slug}`;
+        return `/mentors/${mentor.id}`;
     }
 
     static getMentorCategories() {
