@@ -88,7 +88,7 @@ export default class Login extends Component {
         });
     }
 
-    onSubmit(e) {
+    onSubmit = (e) => {
         const { email, password } = this.state;
 
         e.preventDefault();

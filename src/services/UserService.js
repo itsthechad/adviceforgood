@@ -5,6 +5,7 @@ const DUMMY_USER = {
     lastName: 'Parrish',
     email: 'thisismyemail@thisisntmyemail.com',
     role: 'ADMIN',
+    id: '1'
 }
 
 export default class UserService {
@@ -23,6 +24,6 @@ export default class UserService {
     }
 
     static getUser() {
-        return localStorage.getItem('user');
+        return JSON.parse(localStorage.getItem('user'));
     }
 }
