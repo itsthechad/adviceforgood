@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import classnames from 'classnames';
 
 import Page from '../components/Page';
@@ -26,6 +27,8 @@ export default class Mentors extends Component {
                         { mentorsData.data.map((mentor) => this.renderMentorListItem(mentor)) }
                     </div>
                 }
+                <hr />
+                <Link to='/mentor-apply'><span>Apply to be a mentor</span></Link>
             </Page>
         );
     }

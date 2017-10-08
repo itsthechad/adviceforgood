@@ -15,7 +15,10 @@ export default class MenteeService {
             url = `/users/${idToModify}`;
         }
 
-        const descriptionRaw = JSON.stringify(convertToRaw(data.descriptionEditorState.getCurrentContent()));
+        let descriptionRaw = '';
+        if (data.descriptionEditorState) {
+            descriptionRaw = JSON.stringify(convertToRaw(data.descriptionEditorState.getCurrentContent()));
+        }
 
         return ServiceWrapper[type](url, {
             role: 'MENTEE',

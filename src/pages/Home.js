@@ -1,26 +1,20 @@
 import React, { Component } from 'react';
-import ServiceWrapper from './../utils/ServiceWrapper';
+
+// Components
+import Page from '../components/Page';
 
 export default class Home extends Component {
 
     render() {
         return (
-            <div>
+            <Page>
                 <h1>Home Page</h1>
-                <button onClick={ this.handleButtonClick } type="button" className="btn btn-primary">Test Button</button>
-            </div>
+                <p>
+                    Advice for Good is a platform where volunteer-minded people who need business advice can earn time with a
+                    mentor in exchange for charitable service. This is a ‘good goes around’ solution where people can give to one
+                    another and their community by connecting with one another.
+                </p>
+            </Page>
         );
-    }
-
-    handleButtonClick() {
-        ServiceWrapper.post('/mentor/list', {
-            data: {},
-        })
-        .then((response) => {
-            console.log(response);
-        })
-        .catch((error) => {
-            console.log(error);
-        });
     }
 }
