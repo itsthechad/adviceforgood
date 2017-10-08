@@ -8,7 +8,8 @@ import Page from '../components/Page';
 import UserService from '../services/UserService';
 
 // Constants
-const USER = UserService.getCurrentUser();
+// debugger;
+// const USER = UserService.getCurrentUser();
 // TODO: temp
 const TIERPRICING = {
     1: 2, // (Tier 1 costs 2 points)
@@ -27,9 +28,13 @@ export default class MentorContact extends Component {
     render() {
         const { mentor, mentorshipTier } = this.props.location.state;
 
-        if (USER.points < TIERPRICING[mentorshipTier]) {
+        const currentUser = UserService.getCurrentUser();
+
+        if (currentUser.points < TIERPRICING[mentorshipTier]) {
             return (
-                <h1>Not enough points</h1>
+                <Page>
+                    <h1>Not enough points</h1>
+                </Page>
             );
         }
 

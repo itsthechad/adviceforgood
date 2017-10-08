@@ -40,12 +40,12 @@ export default class Mentor extends Component {
                 <div>
                     <h2>Get Coffee <small>(45 minutes)</small></h2>
                     <div>Meet with the mentor at a coffee shop of their choosing.</div>
-                    <Link to={ { pathname: '/contact-mentor', state: { mentor: mentor, mentorshipTier: 2 } } }><button className={ classnames('btn', 'btn-primary') }>Redeem2</button></Link>
+                    <Link to={ { pathname: '/contact-mentor', state: { mentor: mentor, mentorshipTier: 2 } } }><button className={ classnames('btn', 'btn-primary') }>Redeem</button></Link>
                 </div>
                 <div>
                     <h2>Phone Call <small>(30 minutes)</small></h2>
                     <div>30 minutes to pick your mentor's brain.</div>
-                    <Link to={ { pathname: '/contact-mentor', state: { mentor: mentor, mentorshipTier: 1 } } }><button className={ classnames('btn', 'btn-primary') }>Redeem2</button></Link>
+                    <Link to={ { pathname: '/contact-mentor', state: { mentor: mentor, mentorshipTier: 1 } } }><button className={ classnames('btn', 'btn-primary') }>Redeem</button></Link>
                 </div>
             </Page>
         );
