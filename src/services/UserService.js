@@ -23,7 +23,18 @@ export default class UserService {
         });
     }
 
+    static getUsers() {
+        return ServiceWrapper.get('/users')
+        .then(resp => resp.data)
+        .catch(err => err);
+    }
+
     static getUser() {
         return JSON.parse(localStorage.getItem('user'));
+    }
+
+    static isAdmin() {
+        const user = UserService.getUser();
+        return user.role === 'ADMIN';
     }
 }

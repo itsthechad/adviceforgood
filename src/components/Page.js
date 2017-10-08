@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 
+// Styles
+import '../styles/page.css';
+
 /* Page component that abstracts out the basic page dom.
  * Prefixes all base class names with the value of the clsPrefix prop.
  */

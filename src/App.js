@@ -11,9 +11,15 @@ import Mentor from './pages/Mentor';
 import Login from './pages/Login';
 import MenteeSignupConfirmation from './pages/MenteeSignupConfirmation';
 import MentorApplyConfirmation from './pages/MentorApplyConfirmation';
+import Users from './pages/admin/Users';
+
+// Services
+import UserService from './services/UserService';
 
 export default class App extends Component {
     render() {
+        const isAdmin = UserService.isAdmin();
+
         return (
             <div className="App">
                 <Header />
@@ -26,6 +32,9 @@ export default class App extends Component {
                     <Route exact path="/mentor-apply" component={ MentorApply } />
                     <Route exact path="/signup-confirmation" component={ MenteeSignupConfirmation } />
                     <Route exact path="/mentor-apply-confirmation" component={ MentorApplyConfirmation } />
+                    { isAdmin &&
+                        <Route exact path="/users" component={ Users } />
+                    }
                 </Switch>
             </div>
         );

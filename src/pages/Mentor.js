@@ -15,7 +15,7 @@ export default class Mentor extends Component {
             const descriptionContent = EditorState.createWithContent(convertFromRaw(JSON.parse(data.description)));
             this.setState({
                 mentor: data,
-                descriptionContent
+                descriptionContent,
             });
         });
     }

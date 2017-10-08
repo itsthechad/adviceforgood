@@ -1,0 +1,23 @@
+body {
+    font-family: 'Asap', sans-serif;
+}
+
+button.btn.btn-primary {
+    background-color: #00c1a8;
+    border-color: #00c1a8;
+}
+
+button.btn.btn-primary:active {
+    background-color: #00c1a8;
+    border-color: #00c1a8;
+    box-shadow: none;
+}
+
+a {
+    color: #aaa;
+}
+
+a:active,
+a:hover {
+    color: #333;
+}

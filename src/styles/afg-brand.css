@@ -1,0 +1,34 @@
+.advice-for-good-brand {
+    text-transform: uppercase;
+    font-weight: 600;
+    height: 36px;
+    color: #888;
+    transition: color 300ms linear;
+}
+
+.advice-for-good-brand:hover {
+    color: #444;
+}
+
+.advice-for-good-brand__advice {
+    font-size: 14px;
+    line-height: 10px;
+}
+
+.advice-for-good-brand__for {
+    font-size: 10px;
+    text-transform: lowercase;
+    margin-left: 2px;
+}
+
+.advice-for-good-brand__good {
+    font-size: 28px;
+    line-height: 20px;
+    margin-left: 5px;
+    color: #444;
+    transition: color 300ms linear;
+}
+
+.advice-for-good-brand:hover .advice-for-good-brand__good {
+    color: #000;
+}
