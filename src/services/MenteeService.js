@@ -35,4 +35,15 @@ export default class MenteeService {
         .then(resp => resp)
         .catch(err => err);
     }
+
+    static firstContact({ menteeId, mentorId, mentorshipTier, message }) {
+        return ServiceWrapper.post('/mentor/mentee/contact', {
+            menteeId,
+            mentorId,
+            tier: mentorshipTier,
+            message,
+        })
+        .then(resp => resp)
+        .catch(err => err);
+    }
 }

@@ -4,8 +4,8 @@ const DUMMY_USER = {
     firstName: 'Brooks',
     lastName: 'Parrish',
     email: 'thisismyemail@thisisntmyemail.com',
-    role: 'MENTOR',
-    id: '1',
+    role: 'MENTEE',
+    id: '4',
     points: 8,
 };
 

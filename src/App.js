@@ -15,6 +15,7 @@ import MentorApplyConfirmation from './pages/MentorApplyConfirmation';
 import Users from './pages/admin/Users';
 import EditUser from './pages/admin/EditUser';
 import MentorContact from './pages/MentorContact';
+import MentorContactConfirmation from './pages/MentorContactConfirmation';
 
 // Services
 import UserService from './services/UserService';
@@ -37,6 +38,7 @@ export default class App extends Component {
                     <Route exact path="/signup-confirmation" component={ MenteeSignupConfirmation } />
                     <Route exact path="/mentor-apply-confirmation" component={ MentorApplyConfirmation } />
                     <Route exact path="/contact-mentor" component={ MentorContact } />
+                    <Route exact path="/contact-mentor-confirmation" component={ MentorContactConfirmation } />
                     { isAdmin && <Route exact path="/users" component={ Users } /> }
                     { isAdmin && <Route exact path="/users/:id" component={ EditUser } /> }
                 </Switch>
