@@ -1,5 +1,4 @@
 import ServiceWrapper from '../utils/ServiceWrapper';
-import { convertToRaw } from 'draft-js';
 
 const DUMMY_DATA = {
     pageNumber: 1,
@@ -138,20 +137,7 @@ export default class MentorService {
         });
     }
 
-    static createMentor({ firstName, lastName, email, title, company, descriptionEditorState, categories, password }) {
-        const descriptionRaw = JSON.stringify(convertToRaw(descriptionEditorState.getCurrentContent()));
-        return ServiceWrapper.post('/users', {
-            role: 'MENTOR',
-            firstName,
-            lastName,
-            email,
-            title,
-            company,
-            categories,
-            password,
-            description: descriptionRaw,
-        })
-    }
+    // Create/Edit mentor is the same as mentee, so just referencing MenteeService for now
 
     static getMentorLink(mentor) {
         return `/mentors/${mentor.slug}`;
